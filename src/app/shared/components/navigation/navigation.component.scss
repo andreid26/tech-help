@@ -1,0 +1,89 @@
+@import '../../../../assets/styles/variables.scss';
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: $mediumBlue;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: 600px) {
+        padding: 0 !important;
+    }
+
+    .nav-logo {
+        color: $textColor;
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 600px) {
+            font-size: 1.8rem;
+            padding: 1.2rem 0 1.2rem 1.2rem;
+        }
+
+        span {
+            color: $lightBlue;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        
+        @media only screen and (max-width: 600px) {
+            display: none;
+            order: 3;
+            flex-direction: column !important;
+            width: 100% !important;
+        }
+
+        li {
+            a {
+                text-decoration: none;
+                color: $textColor;
+                font-size: 0.9rem;
+                padding: 0.3em 1em;
+                margin: 0 0.5em;
+                border: 1px solid $lightBlue;
+                border-radius: 5px;
+
+                @media only screen and (max-width: 600px) {
+                    display: block;
+                    padding: 0.8em 0;
+                    margin: 0;
+                    border: none;
+                    border-radius: 0;
+
+                    &:hover {
+                        background-color: $lightBlue !important;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 600px) {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    .action-icon {
+        display: none;
+        color: $textColor;
+        font-size: 1.1rem;
+        cursor: pointer;
+
+        @media only screen and (max-width: 600px) {
+            display: block;
+            padding: 1.2rem 1.2rem 1.2rem 0;
+        }
+    }
+}
+
+.active-link {
+    background-color: $lightBlue;
+}

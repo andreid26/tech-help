@@ -1,0 +1,27 @@
+<div class="register-container">
+    <h1><span>W</span>elcome back</h1>
+
+    <form [formGroup]="loginFG">
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="email"
+                    type="text"
+                    pInputText
+                    placeholder="Email address"
+                    autocomplete="disabled">
+            <span class="p-inputgroup-addon"><i class="{{ !email.valid && submitButtonClicked ? 'pi pi-envelope invalid-input' : 'pi pi-envelope' }}"></i></span>         
+        </div>
+
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="password"
+                    type="password"
+                    pInputText
+                    placeholder="Password"
+                    autocomplete="disabled">
+            <span class="p-inputgroup-addon"><i class="{{ !password.valid && submitButtonClicked ? 'pi pi-lock invalid-input' : 'pi pi-lock' }}"></i></span>         
+        </div>
+
+        <button type="button" (click)="login()">
+            <i class="pi pi-user-plus"></i> Connect
+        </button>
+    </form>
+</div>

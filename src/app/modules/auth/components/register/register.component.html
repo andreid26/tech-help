@@ -1,0 +1,45 @@
+<div class="register-container">
+    <h1><span>R</span>egister</h1>
+
+    <form [formGroup]="registerFG">
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="email"
+                    type="text"
+                    pInputText
+                    placeholder="Email address"
+                    autocomplete="disabled">
+            <span class="p-inputgroup-addon"><i class="{{ !email.valid && submitButtonClicked ? 'pi pi-envelope invalid-input' : 'pi pi-envelope' }}"></i></span>         
+        </div>
+
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="username"
+                    type="text"
+                    pInputText
+                    placeholder="Username"
+                    autocomplete="disabled">
+            <span class="p-inputgroup-addon"><i class="{{ !username.valid && submitButtonClicked ? 'pi pi-user invalid-input' : 'pi pi-user' }}"></i></span>         
+        </div>
+
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="password"
+                    type="password"
+                    pInputText
+                    placeholder="Password"
+                    autocomplete="disabled">
+            <span class="p-inputgroup-addon"><i class="{{ !password.valid && submitButtonClicked ? 'pi pi-lock invalid-input' : 'pi pi-lock' }}"></i></span>         
+        </div>
+
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="passwordRepeat"
+                    type="password"
+                    pInputText
+                    placeholder="Repeat password"
+                    autocomplete="disabled">
+            <span class="p-inputgroup-addon"><i class="{{ !passwordRepeat.valid && submitButtonClicked ? 'pi pi-lock invalid-input' : 'pi pi-lock' }}"></i></span>         
+        </div>
+
+        <button type="button" (click)="createAccount()">
+            <i class="pi pi-user-plus"></i> Register
+        </button>
+    </form>
+</div>
