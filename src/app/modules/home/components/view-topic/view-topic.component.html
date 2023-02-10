@@ -1,0 +1,42 @@
+<div *ngIf="!!topic; else noTopicDetails" class="view-topic-container container">
+    <div class="topic-details mb-3">
+        <div class="topic-details-header d-flex flex-row align-items-center justify-content-between">
+            <span class="topic-user">{{ topic.username || 'No username' }}</span>
+            <span class="topic-date">{{ getDate() || 'No date' }}</span>
+        </div>
+        <div class="topic-details-footer pb-5">
+            <p class="topic-status"><i [class]="getStatusIcon()"></i></p>
+            <h1 class="topic-title text-center pt-1 pb-4">{{ topic.title || 'No topic title found.' }}</h1>
+            <p class="topic-text px-4">{{ topic.text || 'No topic content.' }}</p>
+        </div>
+    </div>
+    <div class="topic-posts">
+        <div *ngFor="let post of (posts | async)" class="post-box my-3">
+            <div class="post-header d-flex flex-row align-items-center justify-content-between">
+                <span class="post-user">{{ post.username || 'No username' }}</span>
+                <div class="post-other-info d-flex flex-row align-items-center justify-content-between">
+                    <span class="post-date">{{ getDate(post) || 'No date' }}</span>
+                    <i *ngIf="topic && topic.pinned_post && topic.pinned_post === post.id" class="pi pi-check-circle post-pinned px-2"></i>
+                    <i *ngIf="(topic.id_user === user.id && !topic.pinned_post)" class="pi pi-check-circle post-pin px-2" (click)="pinPost(post.id)"></i>
+                </div>
+            </div>
+            <div class="post-footer">
+                <p class="post-text">{{ post.text || 'No post content.' }}</p>
+            </div>
+        </div>
+    </div>
+    <form *ngIf="topic.status === 'open'" [formGroup]="postFG" class="topic-post-add">
+        <div class="p-inputgroup mb-3">
+            <textarea formControlName="text" autocomplete="disabled"></textarea>
+        </div>
+        <button type="button" (click)="addPost()">
+            Add post
+        </button>
+    </form>
+</div>
+<div class="footer">
+    <p>Copyright &copy; 2023 by Andrei</p>
+</div>
+<ng-template #noTopicDetails>
+    <h1 class="no-topic">No topic details found.</h1>
+</ng-template>

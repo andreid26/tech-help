@@ -1,5 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
+import { LoadingSpinnerService } from '@services/loading.service';
+import { NotificationsService } from '@services/notifications.service';
+import { catchError, of, take, takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -10,8 +15,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   registerFG: FormGroup;
   submitButtonClicked: boolean;
+  alive: boolean;
 
-  constructor() {
+  constructor(private _notificationsService: NotificationsService,
+              private _authService: AuthService,
+              private _loadingService: LoadingSpinnerService,
+              private _router: Router) {
+    this.alive = true;
     this.submitButtonClicked = false;
     this.registerFG = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(50)]),
@@ -41,7 +51,34 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   createAccount() {
     this.submitButtonClicked = true;
+    const { email, username, password, passwordRepeat } = this.registerFG.getRawValue();
+
+    if (password !== passwordRepeat) {
+      this._notificationsService.createMessage('error', 'Register', 'Incorrect repeated password.');
+      return;
+    }
+
+    this._loadingService.setLoading(true);
+    this._authService.register({ email, username, password }).pipe(
+      takeWhile(() => this.alive),
+      take(1),
+      catchError(error => {
+        this._loadingService.setLoading(false);
+        this._notificationsService.handleError(error);
+        return of(false);
+      })
+    ).subscribe((response: any) => {
+      this._loadingService.setLoading(false);
+        if(response) {
+          this._notificationsService.createMessage('success', 'Register', 'Account created');
+          setTimeout(() => {
+            this._router.navigate(['/auth/login']);
+          }, 2000);
+        }
+    });
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy() {
+    this.alive = false;
+  }
 }

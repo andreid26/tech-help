@@ -1,0 +1,21 @@
+<div class="sections-container">
+    <div class="sections-banner">
+        <div class="inner-wrapper"></div>
+    </div>
+    <div class="container">
+        <h1 class="sections-title">Current sections</h1>
+        <div class="row sections">
+            <div *ngFor="let section of (sections | async)" class="col-md-4 mb-4">
+                <app-section-box [section]="section"
+                                 [iconCls]="section.iconCls"
+                                 [color]="section.color"
+                                 [text]="section.text"
+                                 [redirectLink]="section.redirectLink">
+                </app-section-box>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright &copy; 2023 by Andrei</p>
+    </div>
+</div>

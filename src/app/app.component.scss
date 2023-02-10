@@ -1,0 +1,8 @@
+@import '../assets/styles/variables.scss';
+
+:host ::ng-deep .tech-help-messages {
+    position: fixed;
+    top: 0;
+    right: 5px;
+    z-index: 9999;
+}

@@ -1,2 +1,4 @@
 <app-navigation></app-navigation>
+<loading-spinner *ngIf="isLoading"></loading-spinner>
+<p-messages [closable]="true" styleClass="tech-help-messages"></p-messages>
 <router-outlet></router-outlet>

@@ -1,0 +1,9 @@
+<div class="section-box">
+    <div class="box-header" [ngStyle]="{ backgroundColor: color }">
+        <i [class]="'pi ' + iconCls"></i>
+    </div>
+    <div class="box-content">
+        <h1>{{ text }}</h1>
+        <button *ngIf="!withoutFooterButton" type="button" [ngStyle]="{ borderColor: color, backgroundColor: isMouseOverBox ? color : 'transparent' }" (click)="redirect()" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">Go</button>
+    </div>
+</div>

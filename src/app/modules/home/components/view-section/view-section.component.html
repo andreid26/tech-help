@@ -1,0 +1,50 @@
+<div *ngIf="isSectionInitialized | async" class="view-section-details">
+    <app-section-box [withoutFooterButton]="true"
+                     [section]="section"
+                     [iconCls]="section.iconCls"
+                     [color]="section.color"
+                     [text]="section.text"
+                     [redirectLink]="section.redirectLink">
+    </app-section-box>
+</div>
+<div class="view-section-container container">
+    <div class="section-actions d-flex flex-row align-items-center justify-content-end">
+        <button class="add-topic-button" type="button" (click)="showAddTopicDialog()">
+            Add topic
+        </button>
+    </div>
+    <div *ngIf="!!(topics | async).length; else noTopics">
+        <div *ngFor="let topic of (topics | async)" class="row topic-box"  (click)="viewTopic(topic.id)">
+            <div class="col-md-1 status-icon text-center">
+                <i [class]="getStatusIcon(topic)"></i>
+            </div>
+            <div class="col-md-2 text-center">
+                <span class="topic-user">
+                    {{ topic.username }}
+                </span>
+            </div>
+            <div class="topic-title col-md-7 text-truncate text-left">
+                <span>
+                    {{ topic.title }}
+                </span>
+            </div>
+            <div class="col-md-2 text-truncate text-center">
+                <span class="topic-date">
+                    {{ getDate(topic) }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <ng-template #noTopics>
+        <h1 class="no-topics">No topics in this section</h1>
+    </ng-template>
+    <div class="footer">
+        <p>Copyright &copy; 2023 by Andrei</p>
+    </div>
+</div>
+<app-add-topic-dialog *ngIf="isDialogVisible | async"
+                        [sectionId]="section && section.id"
+                        [sectionName]="section && section.text"
+                        [userId]="user && user.id"
+                        (onCloseDialog)="closeDialog($event)">
+</app-add-topic-dialog>

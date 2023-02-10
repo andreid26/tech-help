@@ -1,0 +1,174 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.view-topic-container {
+    margin: 8em auto 4em auto;
+    padding: 0;
+    width: 100%;
+    height: auto;
+
+    .topic-details {
+        background-color: $mediumBlue;
+
+        .topic-details-header {
+            width: 100%;
+            padding: 1em;
+            background-color: $darkGray;
+    
+            .topic-user {
+                font-weight: 600;
+                color: $lightBlue;
+            }
+    
+            .topic-date {
+                color: $lightGray;
+                font-weight: 400;
+                font-size: 0.9rem;
+            }
+        }
+
+        .topic-details-footer {
+            padding: 1em;
+            width: 100%;
+
+            .topic-status {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+
+                i {
+                    font-size: 4rem;
+                    padding: 0.2em 0 0.6em 0;
+                }
+            }
+
+            .topic-title {
+                color: $lightBlue;
+                font-size: 1.2rem;
+                font-weight: 400;
+            }
+
+            .topic-text {
+                margin: 0;
+                color: $lightGray;
+                font-size: 0.9rem;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .topic-posts {
+        height: auto;
+
+        .post-box {
+            background-color: $mediumBlue;
+
+            .post-header {
+                width: 100%;
+                padding: 1em;
+                background-color: $darkGray;
+
+                .post-user {
+                    font-weight: 600;
+                    color: $lightBlue;
+                }
+                
+                .post-other-info {
+                    .post-date {
+                        color: $lightGray;
+                        font-weight: 400;
+                        font-size: 0.9rem;
+                    }
+
+                    .post-pinned {
+                        color: $lightGreen;
+                        font-size: 1.4rem;
+                    }
+
+                    .post-pin {
+                        color: $lightBlue;
+                        font-size: 1.4rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .post-footer {
+                width: 100%;
+                padding: 1em;
+
+                .post-text {
+                    margin: 0;
+                    padding: 0;
+                    color: $lightGray;
+                    font-size: 0.9rem;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+    .topic-post-add {
+        background-color: $mediumBlue;
+        padding: 1em;
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 0.5rem;
+            resize: none;
+            border-color: $border;
+            background-color: transparent;
+            color: $textColor;
+            font-weight: lighter;
+            font-size: 0.9rem;
+          
+            &:focus {
+                box-shadow: none !important;
+                outline: none !important;
+            }
+        }
+        
+        button {
+            outline: none;
+            border: none;
+            padding: 0.3em 0.5em;
+            background-color: $turquoise;
+            color: $darkGray;
+            border-radius: 5px;
+        }
+    }
+}
+
+.no-topic {
+    text-align: center;
+    color: $textColor;
+    font-size: 2rem;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.green-icon {
+    color: $lightGreen;
+}
+
+.red-icon {
+    color: $red;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    p {
+        font-size: 0.8rem;
+        margin: 0;
+        padding: 0.5em 0;
+        color: $textColor;
+    }
+}

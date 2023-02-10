@@ -1,8 +1,11 @@
 <nav class="nav-container d-flex flex-row align-items-center justify-content-between px-5 py-4">
     <div class="nav-logo"><span>T</span>ech<span>H</span>elp</div>
     <ul [ngClass]="{'d-flex': isBurgerMenuOpen}" class="nav-links m-0 flex-row align-items-center justify-content-between">
-        <li><a [routerLink]="['auth/register']" routerLinkActive="active-link">Register</a></li>
-        <li><a [routerLink]="['auth/login']" routerLinkActive="active-link">Connect</a></li>
+        <li><a [routerLink]="['main']" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact:true }">Home</a></li>
+        <li *ngIf="!isUserLoggedIn()"><a [routerLink]="['auth/register']" routerLinkActive="active-link">Register</a></li>
+        <li *ngIf="!isUserLoggedIn()"><a [routerLink]="['auth/login']" routerLinkActive="active-link">Connect</a></li>
+        <li *ngIf="isUserLoggedIn()"><a [routerLink]="['main/sections']" routerLinkActive="active-link">Sections</a></li>
+        <li *ngIf="isUserLoggedIn()" (click)="logout()"><a class="logout-button">Logout</a></li>
     </ul>
     <i *ngIf="!isBurgerMenuOpen" class="action-icon pi pi-bars" (click)="toggleNavigationMenu(true)"></i>
     <i *ngIf="isBurgerMenuOpen" class="action-icon pi pi-times" (click)="toggleNavigationMenu(false)"></i>

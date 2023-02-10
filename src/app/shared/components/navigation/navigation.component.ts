@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +12,8 @@ export class NavigationComponent  implements OnInit, OnDestroy {
   alive: boolean;
   isBurgerMenuOpen = false;
  
-  constructor() {
+  constructor(private _userService: UserService,
+              private _router: Router) {
     this.alive = true;
   }
 
@@ -18,6 +21,15 @@ export class NavigationComponent  implements OnInit, OnDestroy {
 
   toggleNavigationMenu(open: boolean) {
     this.isBurgerMenuOpen = open;
+  }
+
+  isUserLoggedIn() {
+    return this._userService.isLoggedIn();
+  }
+
+  logout() {
+    this._userService.logout();
+    this._router.navigate(['/main']);
   }
 
   ngOnDestroy(): void {

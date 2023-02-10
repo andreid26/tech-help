@@ -1,0 +1,19 @@
+<p-dialog [header]="'Add new topic on section ' + sectionName" [visible]="true" [style]="{ width: '80vw' }" [modal]="true" [closable]="false">
+    <form [formGroup]="addTopicFG">
+        <div class="p-inputgroup mb-3">
+            <input  formControlName="title"
+                    type="text"
+                    pInputText
+                    placeholder="Topic title"
+                    autocomplete="disabled"
+                    class="{{ !title.valid && submitButtonClicked ? 'ng-dirty' : '' }}">
+        </div>
+        <div class="p-inputgroup mb-3">
+            <textarea formControlName="text" pInputTextarea [rows]="8" [autoResize]="true"></textarea>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <button class="action-button" (click)="closeDialog()">Close</button>
+        <button class="action-button" (click)="addTopic()">Add topic</button>
+    </ng-template>
+</p-dialog>

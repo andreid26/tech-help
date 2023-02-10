@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthContainerComponent } from './container/auth.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [

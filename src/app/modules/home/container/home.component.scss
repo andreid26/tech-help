@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/variables.scss';
 
 .home-container {
-    height: calc(100vh - 72px);
+    min-height: calc(100vh - 72px);
     width: 100%;
 
     .home-banner {
@@ -61,7 +61,7 @@
         width: 100%;
         background-color: $darkBlue;
 
-        .hone-info-title {
+        .home-info-title {
             padding: 2em 0;
             text-align: center;
             color: $textColor;
@@ -117,22 +117,6 @@
             }
         }
     }
-
-    .home-footer {
-        width: 100%;
-        height: 30vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-
-        p {
-            font-size: 0.8rem;
-            margin: 0;
-            padding: 0.5em 0;
-            color: $textColor;
-        }
-    }
 }
 
 .middle-box {
@@ -141,5 +125,23 @@
 
     i {
         color: $turquoise !important;
+    }
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    p {
+        font-size: 0.8rem;
+        margin: 0;
+        padding: 0.5em 0;
+        color: $textColor;
     }
 }

@@ -43,6 +43,7 @@
 
         li {
             a {
+                cursor: pointer;
                 text-decoration: none;
                 color: $textColor;
                 font-size: 0.9rem;
@@ -86,4 +87,8 @@
 
 .active-link {
     background-color: $lightBlue;
+}
+
+.logout-button {
+   border: 1px solid $turquoise !important;
 }
